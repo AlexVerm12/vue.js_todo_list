@@ -1,7 +1,12 @@
 <template>
-  <div class="flex justify-between py-2 px-2" :class="{'bg-green-600': this.todo.done}">
+  <div
+    class="flex justify-between py-2 px-2"
+    :class="{ 'bg-green-600': this.todo.done }"
+  >
     <p @click="toggleTodo" class="text-xl cursor-pointer">{{ todo.todo }}</p>
-    <button class="bg-red-600 py-1 px-2 rounded">Delete</button>
+    <button class="bg-red-600 py-1 px-2 rounded" @click="removeTodo">
+      Delete
+    </button>
   </div>
 </template>
 <script>
@@ -14,9 +19,12 @@ export default {
     };
   },
   methods: {
-   toggleTodo(){
-    this.$emit("toggledone-index", this.todoindex)
-   }
+    toggleTodo() {
+      this.$emit("toggledone-index", this.todoindex);
+    },
+    removeTodo() {
+      this.$emit("removetodo-index", this.todoindex);
+    },
   },
 };
 </script>
